@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             ListTile(
               title: Text('Note Title'),
-              subtitle: Text('8 Ocak, 2022'),
+              subtitle: Text('Aug 8, 2022 High'),
               trailing: Checkbox(
                 onChanged: (value){
                   print(value);
