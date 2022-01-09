@@ -45,7 +45,8 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: GestureDetector(
-        onTap: () {},
+        // unfocus yapıyor açılan pencereyi
+        onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 80.0),
@@ -68,7 +69,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                   height: 20.0,
                 ),
                 Text(
-                  'Add Note',
+                  titleText,
                   style: TextStyle(
                       color: Colors.deepPurple,
                       fontSize: 40.0,
@@ -89,7 +90,12 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                               labelText: 'Title',
                               labelStyle: TextStyle(fontSize: 18.0),
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0))),
+                                  borderRadius: BorderRadius.circular(10.0))
+                          ),
+                          validator: (input) =>
+                              input!.trim().isEmpty ? 'Please enter a note title' : null,
+                          onSaved: (input) => _title = input!,
+                          initialValue: _title,
                         ),
                       ),
                       Padding(
