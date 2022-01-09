@@ -59,17 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (_) => HomeScreen()));
               },
-              activeColor: Theme
-                  .of(context)
-                  .primaryColor,
+              activeColor: Theme.of(context).primaryColor,
               value: note.status == 1 ? true : false,
             ),
-            onTap: () =>
-                Navigator.push(context, CupertinoPageRoute(builder: (_) =>
-                    AddNoteScreen(
-                      //updateNoteList: _updateNoteList(),
-                      //note: note
-                    ))),
+            onTap: () => Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (_) => AddNoteScreen(
+                        //updateNoteList: _updateNoteList(),
+                        //note: note
+                        ))),
           ),
           Divider(
             height: 5.0,
@@ -86,9 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         backgroundColor: Colors.blueAccent,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme
-              .of(context)
-              .primaryColor,
+          backgroundColor: Theme.of(context).primaryColor,
           onPressed: () {
             Navigator.push(
                 context,
@@ -106,7 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: CircularProgressIndicator(),
                 );
               }
-              final int completeNoteCount = snapshot.data!.where((Note note) => note.status == 1 ? true : false).toList().length;
+              final int completeNoteCount = snapshot.data!
+                  .where((Note note) => note.status == 1 ? true : false)
+                  .toList()
+                  .length;
 
               return ListView.builder(
                 padding: EdgeInsets.symmetric(vertical: 80.0),
@@ -143,7 +143,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   return _buildNote(snapshot.data![index - 1]);
                 },
               );
-            })
-    );
+            }));
   }
 }
